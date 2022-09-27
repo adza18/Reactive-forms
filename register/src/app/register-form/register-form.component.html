@@ -1,0 +1,60 @@
+<p>{{ registerForm.status }}</p>
+
+<div class="container d-flex justify-content-center" style="border:2px solid black">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <div class="row pt-3">
+            <div class="col-6">
+                <label for="firstname" class="form-label">First name</label>
+                <input type="text" class="form-control" formControlName="firstname">
+                <div class= "text-danger" *ngIf="getInputValue('firstname')?.invalid && (getInputValue('firstname')?.touched || getInputValue('firstname')?.dirty)">
+                    <div *ngIf="checkIsValid('firstname','required')">
+                        First name is required
+                    </div>
+                    <div *ngIf="checkIsValid('firstname','minlength')">
+                        Minimum length is 5
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-6">
+                <label for="lastname" class="form-label">Last name</label>
+                <input type="text" class="form-control" formControlName="lastname">
+                <div class= "text-danger" *ngIf="getInputValue('lastname')?.invalid && (getInputValue('lastname')?.touched || getInputValue('lastname')?.dirty)">
+                    <div *ngIf="checkIsValid('lastname','required')">
+                        Last name is required
+                    </div>
+                    <div *ngIf="checkIsValid('lastname','minlength')">
+                        Minimum length is 5
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <div class="row pt-3">
+            <div class="col-8">
+                <label for="email" class="form-label">Email</label>
+                <input type="text" class="form-control" formControlName="email">
+                <div class= "text-danger" *ngIf="getInputValue('email')?.invalid && (getInputValue('email')?.touched || getInputValue('email')?.dirty)">
+                    <div *ngIf="checkIsValid('email','required')">Email is required</div>
+                    <div *ngIf="checkIsValid('email','email')">Email is invalid</div>
+
+                </div>
+            </div>
+        </div>
+        <div class="row pt-3">
+            <div class="col-8">
+                <label for="contact" class="form-label">Contact</label>
+                <input type="text" class="form-control" formControlName="contact">
+                <div class= "text-danger" *ngIf="getInputValue('contact')?.invalid && (getInputValue('contact')?.touched || getInputValue('contact')?.dirty)">
+                    <div *ngIf="checkIsValid('contact','required')">contact is required</div>
+                    <div *ngIf="checkIsValid('contact','minlength')">min length is 10</div>
+                </div>
+            </div>
+        </div>
+        <div class="row pt-3">
+            <div class="col-4">
+                <button class="btn btn-primary" type="submit">Submit</button>
+            </div>
+        </div>
+    </form>
+</div>
